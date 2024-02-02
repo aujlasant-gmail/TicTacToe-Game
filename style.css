@@ -1,0 +1,106 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Trebuchet MS;
+}
+
+body {
+  background-color: cadetblue;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+.container {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  height: 60vmin;
+  width: 60vmin;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2vmin;
+}
+
+.box {
+  height: 18vmin;
+  font-size: 9vmin;
+  font-weight: 540;
+  width: 18vmin;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  background-color: rgb(245, 245, 188);
+}
+
+button#resetBtn {
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  background-color: black;
+}
+
+#newBtn {
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  background-color: black;
+}
+
+#msg {
+  font-size: 8vmin;
+}
+
+.msg-container {
+  height: 100vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.hide {
+  display: none;
+}
+
+.sparkling {
+  background-color: black;
+  animation: sparkle 1.5s infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    background-color: black;
+    color: white;
+  }
+  50% {
+    background-color: white;
+    color: black;
+  }
+  100% {
+    background-color: black;
+    color: white;
+  }
+}
+
+.x {
+  color: green;
+}
+
+.o {
+  color: firebrick;
+}
