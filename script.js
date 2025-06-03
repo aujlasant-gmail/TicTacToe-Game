@@ -43,19 +43,54 @@ let drawGame = () => {
 };
 
 const checkWinner = () => {
-  if (count === 9) {
-    drawGame();
-  } else {
-    for (let pattern of winPatterns) {
-      let position1 = boxes[pattern[0]].innerText;
-      let position2 = boxes[pattern[1]].innerText;
-      let position3 = boxes[pattern[2]].innerText;
+  let winnerFound = false;
+  for (let pattern of winPatterns) {
+    let pos1 = boxes[pattern[0]].innerText;
+    let pos2 = boxes[pattern[1]].innerText;
+    let pos3 = boxes[pattern[2]].innerText;
 
-      if (position1 !== "" && position2 !== "" && position3 !== "") {
-        if (position1 == position2 && position2 == position3) {
-          showWinner(position1);
-        }
-      }
+    if (pos1 !== "" && pos1 === pos2 && pos2 === pos3) {
+      showWinner(pos1);
+      winnerFound = true;
+      return; // Stop further checking
     }
   }
+
+  if (!winnerFound && count === 9) {
+    drawGame();
+  }
 };
+
+const showWinner = (winner) => {
+  msg.innerText = `Winner is ${winner}`;
+  msgContainer.classList.remove("hide");
+  msgContainer.classList.add("sparkling");
+
+  boxes.forEach((box) => {
+    box.disabled = true;
+  });
+};
+
+// Function to reset the board (used by both new and reset)
+const resetBoard = () => {
+  turnX = true;
+  count = 0;
+  boxes.forEach((box) => {
+    box.innerText = "";
+    box.disabled = false;
+    box.classList.remove("x");
+    box.classList.remove("o");
+  });
+  msgContainer.classList.add("hide");
+  msgContainer.classList.remove("sparkling");
+};
+
+// New Game Button
+newBtn.addEventListener("click", () => {
+  resetBoard();
+});
+
+// Reset Button
+resetBtn.addEventListener("click", () => {
+  resetBoard();
+});
